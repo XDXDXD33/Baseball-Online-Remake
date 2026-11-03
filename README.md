@@ -13,7 +13,7 @@ python -m http.server 8000
 
 ## 目前實作範圍（依照已勾選項目）
 - P1：九局制、好壞球/三振/四壞/出局、壘包與得分、守備與跑壘能力判定、球員能力影響結果。
-- P2：CPBL 初始球員 JSON 資料、Yellow/Red/Purple/Black 卡片、同隊同年度九人 Set Color 加成、先發陣容編輯。
+- P2：CPBL 初始球員 JSON 資料、Yellow/Red/Purple/Black 卡片、至少三名同隊同年度球員啟動 Set Color 加成、先發陣容編輯。
 - P3：球團名稱與陣容管理、生涯賽季快速模擬、比賽紀錄與勝率統計、本機存檔/JSON 匯出與讀取。
 - P4：本機玩家經理帳號。
 
