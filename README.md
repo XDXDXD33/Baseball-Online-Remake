@@ -12,9 +12,9 @@ python -m http.server 8000
 瀏覽器開啟 `http://localhost:8000`。由於球員資料使用 fetch 載入，請勿直接雙擊 index.html。
 
 ## 目前實作範圍（依照已勾選項目）
-- P1：九局制、好壞球/三振/四壞/出局、壘包與得分、守備與跑壘能力判定、球員能力影響結果。
+- P1：九局制與延長賽、好壞球/三振/四壞/出局、壘包與得分、再見分、守備與跑壘能力判定、實際投球動畫與揮棒時機判定。
 - P2：CPBL 初始球員 JSON 資料、Yellow/Red/Purple/Black 卡片、至少三名同隊同年度球員啟動 Set Color 加成、先發陣容編輯。
-- P3：球團名稱與陣容管理、生涯賽季快速模擬、比賽紀錄與勝率統計、本機存檔/JSON 匯出與讀取。
+- P3：球團名稱與陣容管理、生涯賽季快速模擬、比賽紀錄與勝率統計、逐場球員打數/安打/保送/三振/全壘打/打點資料、本機存檔/JSON 匯出與讀取。
 - P4：本機玩家經理帳號。
 
 ## 重要限制
@@ -23,5 +23,5 @@ python -m http.server 8000
 - 本版未實作未勾選的線上對戰、好友排行、球員交換、交易市場、球員養成、天氣、音效等項目。
 - 比賽流程為可操作的九局原型，AI 對手半局使用快速模擬；後續仍可擴充完整逐球投打動畫、投手輪值與更細緻的戰術選擇。
 
-## GitHub Pages
+## 自動檢查\n\n每次推送到 main 時，GitHub Actions 會先執行 JavaScript 語法檢查與棒球規則測試，再進行 Pages 部署。\n\n## GitHub Pages
 Repository Settings → Pages → Build and deployment → Source 選 GitHub Actions。推送到 main 後由 workflow 自動部署。
