@@ -37,3 +37,25 @@ test("第九局下半結束且比分相同時進入延長賽",()=>{
  game.addOut();
  assert.equal(game.inning,10);assert.equal(game.half,"top");assert.equal(game.finished,false);
 });
+
+test("同一打席連續揮空只在三振時記一次打數",()=>{
+ const game=new BaseballGame(home,away);game.half="bottom";
+ const original=Math.random;Math.random=()=>0.99;
+ try{
+  game.swing({zone:true,timingQuality:"Miss"},"contact");
+  assert.equal(game.atBats.home,0);
+  game.swing({zone:true,timingQuality:"Miss"},"contact");
+  assert.equal(game.atBats.home,0);
+  game.swing({zone:true,timingQuality:"Miss"},"contact");
+ }finally{Math.random=original;}
+ assert.equal(game.atBats.home,1);
+ assert.equal(game.playerStats.home.H0.AB,1);
+ assert.equal(game.playerStats.home.H0.SO,1);
+});
+
+test("安打與全壘打會累積球員個人成績",()=>{
+ const game=new BaseballGame(home,away);game.half="bottom";
+ game.applyHit(4,"測試全壘打");
+ const line=game.playerStats.home.H0;
+ assert.equal(line.AB,1);assert.equal(line.H,1);assert.equal(line.HR,1);
+});
