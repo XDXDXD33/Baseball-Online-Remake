@@ -7,7 +7,8 @@ export class BaseballGame{
  get battingSide(){return this.half==="top"?"away":"home";}
  get fieldingSide(){return this.battingSide==="home"?"away":"home";}
  get batter(){const roster=this.battingSide==="home"?this.lineup:this.opponent;return roster[this.batterIndex[this.battingSide]%roster.length]||roster[0];}
- get pitcher(){const roster=this.battingSide==="home"?this.opponent:this.lineup;return roster.find(p=>p.position==="P")||roster[0];}\n getBatterStats(){this.playerStats??={home:{},away:{}};this.playerStats[this.battingSide]??={};const p=this.batter,id=p.id||p.name;return this.playerStats[this.battingSide][id]??=( {id,name:p.name,AB:0,H:0,BB:0,SO:0,HR:0,RBI:0,OUT:0} );}
+ get pitcher(){const roster=this.battingSide==="home"?this.opponent:this.lineup;return roster.find(p=>p.position==="P")||roster[0];}
+ getBatterStats(){this.playerStats??={home:{},away:{}};this.playerStats[this.battingSide]??={};const p=this.batter,id=p.id||p.name;return this.playerStats[this.battingSide][id]??=( {id,name:p.name,AB:0,H:0,BB:0,SO:0,HR:0,RBI:0,OUT:0} );}
  pushLog(text){this.lastEvent=text;this.log.unshift({inning:this.inning,half:this.half,text});this.log=this.log.slice(0,30);}
  advanceBatter(){this.batterIndex[this.battingSide]++;}
  addOut(){this.outs++;this.balls=0;this.strikes=0;if(this.outs>=3)this.endHalf();}
